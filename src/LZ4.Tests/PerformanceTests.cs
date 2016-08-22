@@ -1,4 +1,5 @@
-﻿using System;
+﻿#if !NET_CORE
+using System;
 using System.Linq;
 using System.Threading;
 using LZ4.Tests.Helpers;
@@ -163,3 +164,4 @@ namespace LZ4.Tests
 		}
 	}
 }
+#endif

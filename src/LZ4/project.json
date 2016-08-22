@@ -1,0 +1,47 @@
+﻿{
+  "version": " 1.0.10.93-*",
+  "properties": {
+    "authors": [ "Milosz Krajewski" ]
+  },
+  "packOptions": {
+    "summary": "LZ4 - ultra fast compression algorithm - for all .NET platforms",
+    "owners": [ "Milosz Krajewski" ],
+    "tags": [ "lz4 lz4hc fast compression decompression zlib lzf lzo snappy quicklz" ],
+    "requireLicenseAcceptance": false,
+    "licenseUrl": "https://github.com/MiloszKrajewski/lz4net/blob/master/LICENSE.md",
+    "iconUrl": "https://raw.githubusercontent.com/MiloszKrajewski/lz4net/portable/doc/icon.png",
+    "repository": {
+      "url": "https://github.com/MiloszKrajewski/lz4net",
+      "type": "git"
+    }
+  },
+  "copyright": "Milosz Krajewski",
+  "dependencies": {
+    "LZ4pn": { "target": "project" },
+    "LZ4ps": { "target": "project" }
+  },
+  "configurations": {
+    "Debug": {
+      "buildOptions": {
+        "define": [ "DEBUG" ]
+      }
+    },
+    "Release": {
+      "buildOptions": {
+        "define": [ "RELEASE" ],
+        "optimize": true
+      }
+    }
+  },
+  "frameworks": {
+    "netstandard1.1": {
+      "dependencies": {
+        "NETStandard.Library": "1.6.0",
+        "System.IO.Compression": "4.1.0"
+      },
+      "buildOptions": {
+        "define": [ "NET_CORE" ]
+      }
+    }
+  }
+}

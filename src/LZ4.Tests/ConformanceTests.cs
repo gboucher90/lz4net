@@ -1,4 +1,5 @@
-﻿using System;
+﻿#if !NET_CORE
+using System;
 using System.Collections.Generic;
 using NUnit.Framework;
 using LZ4.Tests.Helpers;
@@ -150,3 +151,4 @@ namespace LZ4.Tests
 }
 
 // ReSharper restore InconsistentNaming
+#endif

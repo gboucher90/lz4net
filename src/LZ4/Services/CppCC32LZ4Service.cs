@@ -24,7 +24,7 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 #endregion
-
+#if !NET_CORE
 using System;
 
 namespace LZ4.Services
@@ -53,3 +53,4 @@ namespace LZ4.Services
 		}
 	}
 }
+#endif

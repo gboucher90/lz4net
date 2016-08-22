@@ -34,8 +34,10 @@ namespace LZ4.Tests.Helpers
 
 			Scan(input);
 			InputLength += length;
+#if !NET_CORE
 			Thread.CurrentThread.Priority = ThreadPriority.Highest;
 			Thread.Yield();
+#endif
 			try
 			{
 				timer.Start();
@@ -44,7 +46,9 @@ namespace LZ4.Tests.Helpers
 			}
 			finally
 			{
+#if !NET_CORE
 				Thread.CurrentThread.Priority = ThreadPriority.Normal;
+#endif
 			}
 			OutputLength += output.Length;
 			return output;

@@ -26,8 +26,6 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #endregion
 
 using LZ4.Services;
-using Microsoft.Win32;
-using System;
 using System.Runtime.CompilerServices;
 
 namespace LZ4
@@ -38,44 +36,15 @@ namespace LZ4
 		/// Note, on Mono the Registry class is not available at all, 
 		/// so access to it have to be isolated.</summary>
 		/// <returns><c>true</c> it VS2010 runtime is installed, <c>false</c> otherwise.</returns>
-		[MethodImpl(MethodImplOptions.NoInlining)]
-		private static bool Has2010Runtime()
-		{
-			var keyName =
-				IntPtr.Size == 4 ? @"SOFTWARE\Microsoft\VisualStudio\10.0\VC\VCRedist\x86" :
-					IntPtr.Size == 8 ? @"SOFTWARE\Wow6432Node\Microsoft\VisualStudio\10.0\VC\VCRedist\x64" :
-						null;
-			if (keyName == null)
-				return false;
-
-			var key = Registry.LocalMachine.OpenSubKey(keyName, false);
-			if (key == null)
-				return false;
-
-			var value = key.GetValue(@"Installed");
-			if (value == null)
-				return false;
-
-			return Convert.ToUInt32(value) != 0;
-		}
+		private static bool Has2010Runtime() { return false; }
 
 		// ReSharper disable InconsistentNaming
 
 		/// <summary>Initializes codecs from LZ4mm.</summary>
-		[MethodImpl(MethodImplOptions.NoInlining)]
-		private static void InitializeLZ4mm()
-		{
-			_service_MM32 = TryService<CppMM32LZ4Service>();
-			_service_MM64 = TryService<CppMM64LZ4Service>();
-		}
+		private static void InitializeLZ4mm() { _service_MM64 = _service_MM32 = null; }
 
 		/// <summary>Initializes codecs from LZ4cc.</summary>
-		[MethodImpl(MethodImplOptions.NoInlining)]
-		private static void InitializeLZ4cc()
-		{
-			_service_CC32 = TryService<CppCC32LZ4Service>();
-			_service_CC64 = TryService<CppCC64LZ4Service>();
-		}
+		private static void InitializeLZ4cc() { _service_CC64 = _service_CC32 = null; }
 
 		/// <summary>Initializes codecs from LZ4n.</summary>
 		[MethodImpl(MethodImplOptions.NoInlining)]

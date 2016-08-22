@@ -1,0 +1,21 @@
+﻿{
+  "dependencies": {
+    "NUnit": "3.4.1",
+    "dotnet-test-nunit": "3.4.0-beta-2",
+    "LZ4": { "target": "project" },
+    "LZ4.Tests.Helpers": { "target": "project" }
+  },
+  "testRunner": "nunit",
+  "frameworks": {
+    "netcoreapp1.0": {
+      "imports": "portable-net45+win8",
+      "dependencies": {
+        "Microsoft.NETCore.App": {
+          "version": "1.0.0-*",
+          "type": "platform"
+        }
+      },
+      "buildOptions": { "define": [ "NET_CORE" ] }
+    }
+  }
+}

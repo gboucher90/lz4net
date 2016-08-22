@@ -1,4 +1,5 @@
-﻿using System;
+﻿#if !NET_CORE
+using System;
 using System.IO;
 using System.IO.Compression;
 using System.Net;
@@ -183,3 +184,4 @@ namespace LZ4.Tests
 		// ReSharper restore InconsistentNaming
 	}
 }
+#endif

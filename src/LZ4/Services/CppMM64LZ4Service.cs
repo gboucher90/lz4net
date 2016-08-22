@@ -24,7 +24,7 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 #endregion
-
+#if !NET_CORE
 namespace LZ4.Services
 {
 	// ReSharper disable once InconsistentNaming
@@ -51,3 +51,4 @@ namespace LZ4.Services
 		}
 	}
 }
+#endif

@@ -2,7 +2,9 @@
 using System.IO;
 using System.Net;
 using System.Threading.Tasks;
+#if !NET_CORE
 using Ionic.BZip2;
+#endif
 using NUnit.Framework;
 
 namespace LZ4.Tests
@@ -36,8 +38,8 @@ namespace LZ4.Tests
 		{
 			return (int)Math.Exp(generator.NextDouble() * Math.Log(maximum));
 		}
-
-		public static string GetSilesiaCorpusFolder()
+#if !NET_CORE
+        public static string GetSilesiaCorpusFolder()
 		{
 			Download();
 			return TEST_DATA_FOLDER;
@@ -91,8 +93,8 @@ namespace LZ4.Tests
 
 			File.Delete(targetZip);
 		}
-
-		private static void CopyStream(Stream istream, Stream ostream)
+#endif
+        private static void CopyStream(Stream istream, Stream ostream)
 		{
 			var buffer = new byte[0x10000];
 			while (true)
